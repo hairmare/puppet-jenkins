@@ -1,10 +1,10 @@
-class jenkins::firewall {
+class jenkins::firewall ($jenkins_port = '8080') {
   if defined('::firewall') {
     ::firewall {
       '500 allow Jenkins inbound traffic':
         action => 'accept',
         state  => 'NEW',
-        dport  => [8080],
+        dport  => [$jenkins_port],
         proto  => 'tcp',
     }
   }
