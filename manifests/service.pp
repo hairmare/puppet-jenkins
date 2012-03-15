@@ -9,7 +9,7 @@ class jenkins::service ($jenkins_port) {
 	ensure	=> file,
 	owner	=> root, group => root,
 	mode	=> 600,
-	content	=> template('${module_name}/jenkins-config.erb'),
+	content	=> template('jenkins/jenkins-config.erb'),
 	notify	=> Service['jenkins'],
   }
 }
