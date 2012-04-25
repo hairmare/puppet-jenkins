@@ -1,7 +1,17 @@
 class jenkins::package {
-  package {
-    'jenkins' :
-      ensure => installed;
+  case $::operatingsystem {
+    gentoo: {
+      package {
+        'jenkins-bin' :
+          ensure => installed;
+      }
+    }
+    default: {
+      package {
+        'jenkins' :
+          ensure => installed;
+      }
+    }
   }
 }
 
