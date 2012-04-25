@@ -12,6 +12,10 @@ class jenkins::repo {
     opensuse: {
       # XXX: Need to figure out how to set up the zypper repo for openSUSE
     }
+    gentoo: {
+      class { 'jenkins::repo::portage':
+      }
+    }
 
     default: {
       class { 'jenkins::repo::debian':
