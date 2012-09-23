@@ -16,12 +16,15 @@ class jenkins::repo {
       class { 'jenkins::repo::portage':
       }
     }
-
-    default: {
+    debian: {
       class { 'jenkins::repo::debian':
         require => Anchor['jenkins::repo::alpha'],
         before  => Anchor['jenkins::repo::omega'],
       }
+    }
+
+    default: {
+      fail( "Unsupported OS: ${::operatingsystem}" )
     }
   }
 }

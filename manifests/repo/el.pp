@@ -4,8 +4,10 @@ class jenkins::repo::el {
     group => 'root',
     mode  => 0644,
   }
-  file { '/etc/yum.repos.d/jenkins.repo':
-    source => "puppet:///modules/${module_name}/jenkins.repo",
+  yumrepo {'jenkins':
+    descr    => 'Jenkins',
+    baseurl  => 'http://pkg.jenkins-ci.org/redhat/',
+    gpgcheck => 1,
   }
   file { '/etc/pki/rpm-gpg/jenkins-ci.org.key':
     source => "puppet:///modules/${module_name}/jenkins-ci.org.key",

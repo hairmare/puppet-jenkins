@@ -1,15 +1,15 @@
-class jenkins::package {
+class jenkins::package($version = 'installed') {
   case $::operatingsystem {
     gentoo: {
       package {
         'jenkins-bin' :
-          ensure => installed;
+          ensure => $version;
       }
     }
     default: {
       package {
         'jenkins' :
-          ensure => installed;
+          ensure => $version;
       }
     }
   }
